@@ -32,17 +32,17 @@ if [ ! -f "$BINARY_FILE" ]; then
 fi
 
 if [ ! -f "$CA_FILE" ]; then
-    echo "CA cert is empty"
+    echo "CA cert file is not found"
     exit 2
 fi
 
 if [ ! -f "$CRT_FILE" ]; then
-    echo "Crt cert is empty"
+    echo "Host crt file is not found"
     exit 2
 fi
 
 if [ ! -f "$KEY_FILE" ]; then
-    echo "Key cert is empty"
+    echo "Host key file is not found"
     exit 2
 fi
 
