@@ -17,7 +17,8 @@ fi
 ## binary
 BINARY_FILE="bin/nebula"
 ## config
-CONF_FILE="config/config.yml"
+CONF_FILE="config/config-$ND_NAME.yml"
+FALLBACK_CONF_FILE="config/config.yml"
 ## certs
 CA_DIR="ca"
 CA_FILE=$CA_DIR"/ca.crt"
@@ -44,6 +45,11 @@ fi
 if [ ! -f "$KEY_FILE" ]; then
     echo "Host key file is not found"
     exit 2
+fi
+
+if [ ! -f "$CONF_FILE" ]; then
+    echo "Host specific configuration file '$CONF_FILE' is not found, use '$FALLBACK_CONF_FILE' insdead."
+    CONF_FILE=FALLBACK_CONF_FILE
 fi
 
 ## make directory and copy config file
